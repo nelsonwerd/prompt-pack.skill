@@ -28,8 +28,9 @@ unzip prompt-pack.skill -d ~/.claude/skills/
 **Or from a clone of this repo:**
 
 ```bash
+git clone https://github.com/nelsonwerd/prompt-pack.skill.git
 mkdir -p ~/.claude/skills
-cp -r prompt-pack-skill/prompt-pack ~/.claude/skills/
+cp -r prompt-pack.skill/prompt-pack ~/.claude/skills/
 ```
 
 No restart needed — Claude Code detects it in-session. Verify with `/skills`, or just ask Claude what skills are available, and confirm `prompt-pack` is listed.
