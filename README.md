@@ -14,6 +14,14 @@ Three modes:
 
 The pack file lives in the repo, so work survives context limits, spans multiple chats and tools, and never leaves the app half-broken. The skill reads the project's `CLAUDE.md` / `AGENTS.md` / memory and bakes the right build/test commands and conventions into every pack.
 
+> **Lightweight by design.** Authoring a pack is one focused planning pass, and each prompt runs in its own short, fresh chat — so token use stays modest and predictable. The cost discipline *is* the point: no single chat has to hold the whole job.
+
+## Quickstart — try this first
+
+> **You type:** "This *<refactor / feature / migration>* is too big for one chat — make me a prompt pack." (Or, if you used ideate: "Make a prompt pack from `docs/CONCEPT_BRIEF.md`.")
+>
+> **You get back:** **`docs/<TOPIC>_PROMPT_PACK.md`** — an ordered set of self-contained prompts. Run each in its own fresh chat, verify, commit, move to the next. No single step can die to a context limit.
+
 ## Install
 
 Skills live in `~/.claude/skills/` (all projects) or `.claude/skills/` (a single project). Put the `prompt-pack/` folder in either one.
@@ -47,6 +55,12 @@ This follows the open **[Agent Skills](https://agentskills.io) standard**, so th
 | **Anyone** | any agent | it's just instructions — open `SKILL.md` and point your agent at it |
 
 <sub>Exact in-app menu names and commands shift between versions — the linked docs are the source of truth. Claude-specific behaviors (auto-activation by description) are invoked explicitly in Codex; the *methodology* itself is fully portable.</sub>
+
+**Runtime support:**
+
+| | Claude app | Claude Code | OpenAI Codex | Generic agent |
+|---|---|---|---|---|
+| **prompt-pack** | Limited — best for high-level planning/handoffs; weak without repo access | **Best** | **Best** — reads `AGENTS.md`, full repo access | Works — with repo/file access |
 
 ## Use it
 
