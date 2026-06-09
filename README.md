@@ -35,6 +35,19 @@ cp -r prompt-pack.skill/prompt-pack ~/.claude/skills/
 
 No restart needed — Claude Code detects it in-session. Verify with `/skills`, or just ask Claude what skills are available, and confirm `prompt-pack` is listed.
 
+## Works in Claude *and* Codex
+
+This follows the open **[Agent Skills](https://agentskills.io) standard**, so the same `SKILL.md` works in **Claude** and **OpenAI Codex**:
+
+| You are… | Tool | How |
+|---|---|---|
+| **Non-technical** | Claude app (claude.ai / desktop) | Upload **`prompt-pack.skill`** (a zip) in the app's **Skills / Capabilities** settings → [Agent Skills docs](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview) |
+| **Developer** | Claude Code | the install above (drop `prompt-pack/` in `~/.claude/skills/`) |
+| **Developer** | OpenAI Codex | copy `prompt-pack/SKILL.md` (+ `references/`) into `.agents/skills/prompt-pack/` in your repo, or `~/.agents/skills/prompt-pack/` globally → [Codex skills docs](https://developers.openai.com/codex/skills) |
+| **Anyone** | any agent | it's just instructions — open `SKILL.md` and point your agent at it |
+
+<sub>Exact in-app menu names and commands shift between versions — the linked docs are the source of truth. Claude-specific behaviors (auto-activation by description) are invoked explicitly in Codex; the *methodology* itself is fully portable.</sub>
+
 ## Use it
 
 - **Manually:** type `/prompt-pack` and describe the big job (or paste a pack prompt to execute it).
