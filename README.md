@@ -1,6 +1,6 @@
 # prompt-pack
 
-A Claude Code skill for **breaking big, risky work into a sequence of small, self-contained prompts** — each run in its own fresh chat so a single change never dies to a context/token limit. It also writes paste-ready **handoff briefings** to resume a dying chat or relay work to another tool (e.g. Codex).
+An **Agent Skill — for Claude and OpenAI Codex** — for **breaking big, risky work into a sequence of small, self-contained prompts** — each run in its own fresh chat so a single change never dies to a context/token limit. It also writes paste-ready **handoff briefings** to resume a dying chat or relay work to another tool (e.g. Codex).
 
 It encodes a battle-tested format (refined across many real packs) so every pack is consistent, safe, and resumable.
 
@@ -47,18 +47,18 @@ No restart needed — Claude Code detects it in-session. Verify with `/skills`, 
 
 This follows the open **[Agent Skills](https://agentskills.io) standard**, so the same `SKILL.md` works in **Claude** and **OpenAI Codex**:
 
-| You are… | Tool | How |
-|---|---|---|
-| **Non-technical** | Claude app (claude.ai / desktop) | Upload **`prompt-pack.skill`** (a zip) in the app's **Skills / Capabilities** settings → [Agent Skills docs](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview) |
-| **Developer** | Claude Code | the install above (drop `prompt-pack/` in `~/.claude/skills/`) |
-| **Developer** | OpenAI Codex | copy `prompt-pack/SKILL.md` (+ `references/`) into `.agents/skills/prompt-pack/` in your repo, or `~/.agents/skills/prompt-pack/` globally → [Codex skills docs](https://developers.openai.com/codex/skills) |
-| **Anyone** | any agent | it's just instructions — open `SKILL.md` and point your agent at it |
+| You use… | Add it by… |
+|---|---|
+| **Claude Code** — terminal, the **Code** tab of the Claude desktop app, [claude.ai/code](https://claude.ai/code), or an IDE | the install above (drop `prompt-pack/` in `~/.claude/skills/`) |
+| **OpenAI Codex** — CLI, app, or IDE | copy `prompt-pack/SKILL.md` (+ `references/`) into `.agents/skills/prompt-pack/` (repo) or `~/.agents/skills/prompt-pack/` (global) → [Codex skills docs](https://developers.openai.com/codex/skills) |
+| **Claude chat** — the **Chat** tab of the desktop app, or [claude.ai](https://claude.ai) | uploading **`prompt-pack.skill`** (the zip) under **Customize → Skills** → [using Skills in Claude](https://support.claude.com/en/articles/12512180-use-skills-in-claude) |
+| **Any other agent** | pointing it at `SKILL.md` — it's just instructions |
 
 <sub>Exact in-app menu names and commands shift between versions — the linked docs are the source of truth. Claude-specific behaviors (auto-activation by description) are invoked explicitly in Codex; the *methodology* itself is fully portable.</sub>
 
 **Runtime support:**
 
-| | Claude app | Claude Code | OpenAI Codex | Generic agent |
+| | Claude chat | Claude Code | OpenAI Codex | Other agents |
 |---|---|---|---|---|
 | **prompt-pack** | Limited — best for high-level planning/handoffs; weak without repo access | **Best** | **Best** — reads `AGENTS.md`, full repo access | Works — with repo/file access |
 
