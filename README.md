@@ -1,6 +1,6 @@
 # prompt-pack
 
-An **Agent Skill — for Claude and OpenAI Codex** — for **breaking big, risky work into a sequence of small, self-contained prompts** — each run in its own fresh chat so a single change never dies to a context/token limit. It also writes paste-ready **handoff briefings** to resume a dying chat or relay work to another tool (e.g. Codex).
+An **Agent Skill — for Claude and OpenAI Codex** — for **breaking big, risky work into a sequence of small, self-contained prompts** — each does one shippable unit, verifies itself, and leaves the app working before the next. Run them in one chat or spread across many; because each prompt is self-contained, any unit moves cleanly to a fresh chat whenever you want (or need) one. It also writes paste-ready **handoff briefings** to resume a chat or relay work to another tool (e.g. Codex).
 
 It encodes a battle-tested format (refined across many real packs) so every pack is consistent, safe, and resumable.
 
@@ -12,7 +12,7 @@ Three modes:
 2. **Execute a pack prompt** — run exactly one prompt in a fresh chat with a disciplined loop: read-first, verify references against current code (and flag the pack for re-planning if the code has drifted far enough that later prompts are now wrong), do only the scoped change, verify (regression + new behavior), report, and **don't commit until told**.
 3. **Handoff** — write a single paste-ready briefing (a degenerate one-prompt pack) so a new chat — or another agent — resumes with full context, including what's shipped, the landmines, and the exact next step.
 
-The pack file lives in the repo, so work survives context limits, spans multiple chats and tools, and never leaves the app half-broken. The skill reads the project's `CLAUDE.md` / `AGENTS.md` / memory and bakes the right build/test commands and conventions into every pack.
+The pack file lives in the repo, so work never leaves the app half-broken, spans multiple chats and tools, and survives a context limit if you hit one. The skill reads the project's `CLAUDE.md` / `AGENTS.md` / memory and bakes the right build/test commands and conventions into every pack.
 
 > **Lightweight by design.** Authoring a pack is one focused planning pass, and each prompt runs in its own short, fresh chat — so token use stays modest and predictable. The cost discipline *is* the point: no single chat has to hold the whole job.
 
@@ -20,7 +20,7 @@ The pack file lives in the repo, so work survives context limits, spans multiple
 
 > **You type:** "This *<refactor / feature / migration>* is too big for one chat — make me a prompt pack." (Or, if you used ideate: "Make a prompt pack from `docs/CONCEPT_BRIEF.md`.")
 >
-> **You get back:** **`docs/<TOPIC>_PROMPT_PACK.md`** — an ordered set of self-contained prompts. Run each in its own fresh chat, verify, commit, move to the next. No single step can die to a context limit.
+> **You get back:** **`docs/<TOPIC>_PROMPT_PACK.md`** — an ordered set of self-contained prompts. Run each unit — one chat or many — verify, commit, move to the next. Any step can move to a fresh chat if one fills up.
 
 ## Install
 
