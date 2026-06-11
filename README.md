@@ -9,7 +9,7 @@ It encodes a battle-tested format (refined across many real packs) so every pack
 Three modes:
 
 1. **Author a pack** — turn a large request into an ordered set of self-contained prompts saved to `docs/<TOPIC>_PROMPT_PACK.md`. Each prompt carries its own context, file list, acceptance criteria, "what must not change" guardrails, verification matrix, and commit message. Each is independently shippable.
-2. **Execute a pack prompt** — run exactly one prompt in a fresh chat with a disciplined loop: read-first, verify references against current code (and flag the pack for re-planning if the code has drifted far enough that later prompts are now wrong), do only the scoped change, verify (regression + new behavior), report, and **don't commit until told**.
+2. **Execute a pack prompt** — run exactly one prompt in a fresh chat with a disciplined loop: read-first, verify references against current code (and flag the pack for re-planning if the code has drifted far enough that later prompts are now wrong), do only the scoped change — and if a gate needs a human or real-world signal you don't have, **stop and emit it, never fake a "passed" gate** — verify (regression + new behavior), report, and **don't commit until told**.
 3. **Handoff** — write a single paste-ready briefing (a degenerate one-prompt pack) so a new chat — or another agent — resumes with full context, including what's shipped, the landmines, and the exact next step.
 
 The pack file lives in the repo, so work never leaves the app half-broken, spans multiple chats and tools, and survives a context limit if you hit one. The skill reads the project's `CLAUDE.md` / `AGENTS.md` / memory and bakes the right build/test commands and conventions into every pack.
